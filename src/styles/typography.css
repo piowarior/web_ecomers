@@ -1,0 +1,65 @@
+@theme inline {
+  --text-display-xl: clamp(2.6rem, 5vw, 4.4rem);
+  --text-display-lg: clamp(2rem, 3.6vw, 3.2rem);
+  --text-display-md: clamp(1.6rem, 2.8vw, 2.4rem);
+  --text-title-lg: clamp(1.2rem, 1.8vw, 1.45rem);
+  --text-title-md: 1.125rem;
+  --text-body-lg: 1.06rem;
+  --text-body-md: 1rem;
+  --text-caption: 0.86rem;
+}
+
+@utility text-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--text-display-xl);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+@utility text-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--text-display-lg);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+@utility text-display-md {
+  font-family: var(--font-display);
+  font-size: var(--text-display-md);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+}
+
+@utility text-title-lg {
+  font-family: var(--font-display);
+  font-size: var(--text-title-lg);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  font-weight: 650;
+}
+
+@utility text-title-md {
+  font-family: var(--font-display);
+  font-size: var(--text-title-md);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 620;
+}
+
+@utility text-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+}
+
+@utility text-body-md {
+  font-size: var(--text-body-md);
+  line-height: 1.65;
+}
+
+@utility text-caption {
+  font-size: var(--text-caption);
+  line-height: 1.55;
+}

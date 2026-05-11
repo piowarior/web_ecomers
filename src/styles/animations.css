@@ -1,0 +1,30 @@
+@theme inline {
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility animate-rise-in {
+  animation: rise-in 550ms var(--ease-out-soft) both;
+}
+
+@utility motion-card {
+  transition:
+    transform 220ms var(--ease-out-soft),
+    box-shadow 220ms var(--ease-out-soft),
+    border-color 220ms var(--ease-out-soft),
+    background-color 220ms var(--ease-out-soft);
+}
+
+@utility motion-card-hover {
+  @apply hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-20px_hsl(var(--shadow)/0.85)];
+}
