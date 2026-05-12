@@ -9,8 +9,9 @@ export function Card({ children, className = "" }: Props) {
     <motion.div
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.28 }}
-      className={`surface-card ${className}`}
+      whileHover={{ y: -4, scale: 1.01 }}
+      transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+      className={`surface-card motion-card motion-card-hover ${className}`}
     >
       {children}
     </motion.div>

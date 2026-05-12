@@ -195,26 +195,56 @@ Avoid:
 Use:
 - Framer Motion
 
-Animations should:
-- feel smooth
-- subtle
+Animation style should feel:
+- modern
+- immersive
+- dynamic
 - premium
-- not excessive
+- smooth
+- interactive
+- startup-level
 
-Examples:
-- fade in
-- stagger animation
-- hover lift
-- smooth page transition
-- animated dashboard cards
-- animated sidebar
-- animated mobile menu
+The platform is allowed to use:
+- advanced motion layouts
+- floating animations
+- animated backgrounds
+- layered motion effects
+- animated gradients
+- shape animations
+- animated glow effects
+- smooth parallax
+- mouse reactive effects
+- animated dashboard transitions
+- animated cards
+- animated hero sections
+- animated typography
+- cinematic section reveals
+- scroll-based animations
+- stagger animations
+- smooth hover interactions
+
+Animations should:
+- remain performant
+- feel fluid
+- avoid lag
+- avoid janky motion
+- maintain readability
+- preserve UX clarity
+
+Preferred feeling:
+- modern startup website
+- interactive SaaS experience
+- futuristic but clean
+- visually impressive
+- premium motion design
 
 Avoid:
-- over-animated UI
-- heavy motion
-- laggy effects
-- unnecessary parallax
+- laggy animations
+- extremely chaotic movement
+- poor mobile performance
+- flashing effects
+- overwhelming motion without hierarchy
+
 
 ---
 
@@ -333,6 +363,127 @@ Avoid:
 - storing sensitive data in client
 
 ---
+
+# MOTION & INTERACTION SYSTEM
+
+This project uses a cinematic SaaS motion system.
+
+The goal is:
+- make UI feel alive
+- not heavy or laggy
+- smooth and premium like Stripe / Framer / Linear
+
+---
+
+# MOTION PRINCIPLES
+
+All animations must follow:
+
+DO:
+- opacity fade
+- transform (translate, scale)
+- stagger animation
+- soft easing (easeOut / easeInOut)
+- subtle hover effects
+
+DO NOT:
+- animate top / left
+- heavy blur animations
+- layout shifting animations
+- excessive parallax layers
+- animation on every text element
+
+---
+
+# PERFORMANCE RULES FOR ANIMATION
+
+Must use:
+- transform: translate3d()
+- opacity transitions
+- GPU-friendly animations
+
+Avoid:
+- layout reflow animations
+- heavy shadow animation loops
+- large blur transitions
+
+---
+
+# FRAMER MOTION USAGE RULE
+
+Framer Motion should ONLY be used for:
+- Hero section
+- Cards
+- Page transitions
+- Key UI interactions
+
+DO NOT:
+- wrap every component with motion.div
+- animate static text blocks
+- animate entire pages unnecessarily
+
+---
+
+# CURSOR SYSTEM (OPTIONAL BUT RECOMMENDED)
+
+If implemented:
+
+Cursor behavior:
+- soft trailing cursor
+- magnetic hover on buttons
+- glow effect on interactive elements
+- focus lens effect on cards
+
+---
+
+# BACKGROUND MOTION SYSTEM
+
+Allowed:
+- slow gradient movement
+- floating blur shapes
+- subtle grid animation
+
+NOT allowed:
+- fast moving backgrounds
+- distracting motion layers
+
+---
+
+# ANIMATION TOOLS STACK
+
+Recommended libraries:
+
+- Framer Motion (primary)
+- GSAP (only for advanced scroll animation)
+- Lenis (smooth scrolling)
+- Motion One (lightweight alternative)
+
+Use ONLY when needed:
+- GSAP → cinematic scroll effects
+- Lenis → smooth scroll experience
+- Framer Motion → UI interactions
+
+---
+
+# ANIMATION ANTI-PATTERN
+
+DO NOT:
+- overuse motion everywhere
+- combine GSAP + Framer randomly
+- create laggy UI interactions
+- animate background excessively
+
+---
+
+# UI FEEL TARGET
+
+The UI must feel:
+
+- soft
+- cinematic
+- premium SaaS
+- responsive
+- alive but not distracting
 
 # CODE ARCHITECTURE
 

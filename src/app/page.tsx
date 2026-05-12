@@ -1,51 +1,49 @@
-import { PageContainer } from "@/components/layouts/PageContainer";
-import { Section } from "@/components/layouts/Section";
+import AnimatedBackdrop from "@/components/landing/AnimatedBackdrop";
+import InteractiveCursor from "@/components/landing/InteractiveCursor";
+import NavBar from "@/components/navigation/NavBar";
+import SmoothScroll from "@/components/landing/SmoothScroll";
 import LandingHero from "@/components/landing/LandingHero";
-import TrustedBy from "@/components/landing/TrustedBy";
-import ServicesCategories from "@/components/landing/ServicesCategories";
-import EcosystemSection from "@/components/landing/EcosystemSection";
-import RentalSection from "@/components/landing/RentalSection";
-import FeatureHighlights from "@/components/landing/FeatureHighlights";
-import DashboardPreview from "@/components/landing/DashboardPreview";
-import CTASection from "@/components/landing/CTASection";
+import LiveEcosystemPreview from "@/components/landing/LiveEcosystemPreview";
+import ServiceUniverse from "@/components/landing/ServiceUniverse";
+import WorkspaceExperience from "@/components/landing/WorkspaceExperience";
+import CreatorShowcase from "@/components/landing/CreatorShowcase";
+import MarketplaceStack from "@/components/landing/MarketplaceStack";
+import AILivingSystem from "@/components/landing/AILivingSystem";
+import FinalLaunchSection from "@/components/landing/FinalLaunchSection";
 import Footer from "@/components/landing/Footer";
+import MarketplaceSection from "@/components/navigation/sections/MarketplaceSection";
+import ProductSection from "@/components/navigation/sections/ProductSection";
+import StoreSection from "@/components/navigation/sections/StoreSection";
+import EcosystemSection from "@/components/navigation/sections/EcosystemSection";
+import ConnectSection from "@/components/navigation/sections/ConnectSection";
+import ExploreSection from "@/components/navigation/sections/ExploreSection";
 
 export default function Home() {
   return (
-    <main className="relative mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-      <PageContainer>
+    <SmoothScroll>
+      <main className="relative w-full overflow-x-clip pb-10">
+        <AnimatedBackdrop />
+        <InteractiveCursor />
+        <NavBar />
+
         <LandingHero />
-
-        <Section>
-          <TrustedBy />
-        </Section>
-
-        <Section>
-          <ServicesCategories />
-        </Section>
-
-        <Section>
-          <EcosystemSection />
-        </Section>
-
-        <Section>
-          <RentalSection />
-        </Section>
-
-        <Section>
-          <FeatureHighlights />
-        </Section>
-
-        <Section>
-          <DashboardPreview />
-        </Section>
-
-        <Section>
-          <CTASection />
-        </Section>
-
+        <MarketplaceSection />
+        <ProductSection />
+        <StoreSection />
+        <EcosystemSection />
+        <ExploreSection />
+        <ConnectSection />
+        <LiveEcosystemPreview />
+        <ServiceUniverse />
+        <WorkspaceExperience />
+        <CreatorShowcase />
+        <section id="platform">
+          <MarketplaceStack />
+        </section>
+        <AILivingSystem />
+        <FinalLaunchSection />
         <Footer />
-      </PageContainer>
-    </main>
+      </main>
+    </SmoothScroll>
   );
 }
