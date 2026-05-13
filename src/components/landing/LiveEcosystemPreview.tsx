@@ -21,7 +21,14 @@ export default function LiveEcosystemPreview() {
   }, []);
 
   return (
-    <section id="ecosystem-live" className="relative py-20 sm:py-24">
+    <motion.section
+      id="ecosystem-live"
+      initial={{ opacity: 0.96, x: 140 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.22 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="relative py-20 sm:py-24"
+    >
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
@@ -71,6 +78,6 @@ export default function LiveEcosystemPreview() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

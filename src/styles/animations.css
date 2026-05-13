@@ -13,8 +13,36 @@
   }
 }
 
+@keyframes marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @utility animate-rise-in {
   animation: rise-in 550ms var(--ease-out-soft) both;
+}
+
+@utility animate-marquee-left {
+  animation: marquee-left 38s linear infinite;
+  will-change: transform;
+}
+
+@utility animate-marquee-right {
+  animation: marquee-right 38s linear infinite;
+  will-change: transform;
 }
 
 @utility motion-card {

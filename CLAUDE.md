@@ -248,6 +248,32 @@ Avoid:
 
 ---
 
+# LANDING PAGE PHILOSOPHY
+
+The landing page should feel like:
+- a cinematic startup experience
+- an immersive ecosystem showcase
+- a premium product commercial
+- an interactive storytelling system
+
+Avoid:
+- basic corporate sections
+- generic SaaS layouts
+- static information-only pages
+- simple scroll-to-about websites
+
+The homepage should prioritize:
+- visual storytelling
+- layered composition
+- motion hierarchy
+- fullscreen immersive sections
+- ecosystem previews
+- dynamic UI showcase
+- premium typography
+- cinematic layouts
+
+The hero section is the highest visual priority.
+
 # TECH STACK
 
 ## Frontend
@@ -397,15 +423,20 @@ DO NOT:
 
 # PERFORMANCE RULES FOR ANIMATION
 
-Must use:
-- transform: translate3d()
-- opacity transitions
-- GPU-friendly animations
+Must:
+- use GPU-friendly transforms
+- use translate3d where possible
+- optimize video backgrounds
+- minimize rerenders
+- lazy load heavy sections
+- use motion only where impactful
 
 Avoid:
-- layout reflow animations
-- heavy shadow animation loops
-- large blur transitions
+- animating large DOM trees
+- excessive blur usage
+- massive shadow rendering
+- motion on every element
+- heavy client-side rendering
 
 ---
 
