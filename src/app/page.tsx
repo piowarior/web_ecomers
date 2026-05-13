@@ -7,17 +7,12 @@ import LiveEcosystemPreview from "@/components/landing/LiveEcosystemPreview";
 import ServiceUniverse from "@/components/landing/ServiceUniverse";
 import WorkspaceExperience from "@/components/landing/WorkspaceExperience";
 import CreatorShowcase from "@/components/landing/CreatorShowcase";
-import MarketplaceStack from "@/components/landing/MarketplaceStack";
-import AILivingSystem from "@/components/landing/AILivingSystem";
 import FinalLaunchSection from "@/components/landing/FinalLaunchSection";
 import Footer from "@/components/landing/Footer";
 import { PageContainer } from "@/components/layouts/PageContainer";
 import MarketplaceSection from "@/components/navigation/sections/MarketplaceSection";
-import ProductSection from "@/components/navigation/sections/ProductSection";
-import StoreSection from "@/components/navigation/sections/StoreSection";
-import EcosystemSection from "@/components/navigation/sections/EcosystemSection";
-import ConnectSection from "@/components/navigation/sections/ConnectSection";
-import ExploreSection from "@/components/navigation/sections/ExploreSection";
+import MarketplaceStack from "@/components/landing/MarketplaceStack";
+import ImmersiveStory from "@/components/landing/ImmersiveStory";
 
 export default function Home() {
   return (
@@ -28,21 +23,13 @@ export default function Home() {
         <NavBar />
 
         <LandingHero />
-        <PageContainer className="space-y-24 py-16 sm:py-20 lg:py-24">
-          <MarketplaceSection />
-          <ProductSection />
-          <StoreSection />
-          <EcosystemSection />
-          <ExploreSection />
-          <ConnectSection />
+        <PageContainer className="space-y-24 py-16 sm:py-20 lg:py-28">
           <LiveEcosystemPreview />
+          <MarketplaceStack />
+          <ImmersiveStory />
           <ServiceUniverse />
           <WorkspaceExperience />
           <CreatorShowcase />
-          <section id="platform">
-            <MarketplaceStack />
-          </section>
-          <AILivingSystem />
           <FinalLaunchSection />
           <Footer />
         </PageContainer>

@@ -7,9 +7,10 @@ type Props = React.PropsWithChildren<{}>;
 export default function SmoothScroll({ children }: Props) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 0.95,
+      lerp: 0.08,
       smoothWheel: true,
-      lerp: 0.09,
+      wheelMultiplier: 0.9,
     });
 
     let frame = 0;
