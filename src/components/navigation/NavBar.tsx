@@ -41,10 +41,10 @@ export default function NavBar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#connect"
-            className="px-3 py-2 rounded-md bg-orange-50 text-white font-medium shadow-sm hover:translate-y-[-1px] transition-transform"
+            href="#"
+            className="px-3 py-2 rounded-md bg-orange-50 text-neutral-900 font-medium shadow-sm hover:translate-y-[-1px] transition-transform"
           >
-            Connect
+            Get Started
           </a>
         </div>
       </nav>

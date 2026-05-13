@@ -11,6 +11,7 @@ import MarketplaceStack from "@/components/landing/MarketplaceStack";
 import AILivingSystem from "@/components/landing/AILivingSystem";
 import FinalLaunchSection from "@/components/landing/FinalLaunchSection";
 import Footer from "@/components/landing/Footer";
+import { PageContainer } from "@/components/layouts/PageContainer";
 import MarketplaceSection from "@/components/navigation/sections/MarketplaceSection";
 import ProductSection from "@/components/navigation/sections/ProductSection";
 import StoreSection from "@/components/navigation/sections/StoreSection";
@@ -27,22 +28,24 @@ export default function Home() {
         <NavBar />
 
         <LandingHero />
-        <MarketplaceSection />
-        <ProductSection />
-        <StoreSection />
-        <EcosystemSection />
-        <ExploreSection />
-        <ConnectSection />
-        <LiveEcosystemPreview />
-        <ServiceUniverse />
-        <WorkspaceExperience />
-        <CreatorShowcase />
-        <section id="platform">
-          <MarketplaceStack />
-        </section>
-        <AILivingSystem />
-        <FinalLaunchSection />
-        <Footer />
+        <PageContainer className="space-y-24 py-16 sm:py-20 lg:py-24">
+          <MarketplaceSection />
+          <ProductSection />
+          <StoreSection />
+          <EcosystemSection />
+          <ExploreSection />
+          <ConnectSection />
+          <LiveEcosystemPreview />
+          <ServiceUniverse />
+          <WorkspaceExperience />
+          <CreatorShowcase />
+          <section id="platform">
+            <MarketplaceStack />
+          </section>
+          <AILivingSystem />
+          <FinalLaunchSection />
+          <Footer />
+        </PageContainer>
       </main>
     </SmoothScroll>
   );
