@@ -1,6 +1,10 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 type GalleryItem = {
   title: string;
@@ -101,15 +105,55 @@ function StaticRow({ items, align = "start" }: { items: GalleryItem[]; align?: "
 }
 
 export default function HeroShowreelSection() {
+
+  const container = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end start"],
+  });
+
+  // TAMBAH DI SINI
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [300, -220]
+  );
+
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    [0.92, 1]
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3],
+    [0.3, 1]
+  );
+
+  const x1 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, 120]
+  );
+
+  const x2 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -120]
+  );
+
   return (
-    <section id="hero-showreel" className="relative z-20 -mt-12 w-full pb-10 sm:-mt-16 sm:pb-12 lg:-mt-20 lg:pb-14">
+    <section  ref={container} id="hero-showreel"   className="relative z-20 -mt-[30hv] w-full pb-10 sm:-mt-16 sm:pb-12 lg:-mt-20 lg:pb-14">
       <div className="relative h-[150vh] w-full">
         <motion.div
-          initial={{ opacity: 0.92, y: 140, scale: 0.985 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.22 }}
-          transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] }}
-          className="sticky top-16 w-full"
+          style={{
+            y,
+            scale,
+            opacity,
+          }}
+          className="sticky top-0 w-full"
         >
           <div className="w-full rounded-[1.2rem] border-y border-border/70 bg-[linear-gradient(180deg,rgba(255,251,245,0.93),rgba(255,247,236,0.99))] py-6 shadow-[0_24px_65px_-40px_hsl(var(--shadow)/0.86)] sm:py-8 lg:py-10">
             <div className="mx-auto w-[min(96%,92rem)] px-2 sm:px-4">
@@ -124,10 +168,23 @@ export default function HeroShowreelSection() {
               </div>
 
               <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-                <StaticRow items={rowOne} />
-                <StaticRow items={rowTwo} align="end" />
-                <StaticRow items={rowThree} />
-                <StaticRow items={rowFour} align="end" />
+
+                <motion.div style={{ x: x1 }}>
+                  <StaticRow items={rowOne} />
+                </motion.div>
+
+                <motion.div style={{ x: x2 }}>
+                  <StaticRow items={rowTwo} align="end" />
+                </motion.div>
+
+                <motion.div style={{ x: x1 }}>
+                  <StaticRow items={rowThree} />
+                </motion.div>
+
+                <motion.div style={{ x: x2 }}>
+                  <StaticRow items={rowFour} align="end" />
+                </motion.div>
+
               </div>
             </div>
           </div>
