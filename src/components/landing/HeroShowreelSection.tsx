@@ -129,6 +129,14 @@ export default function HeroShowreelSection() {
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.45, 1], [0, 0.35, 0.9]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.45, 1], [1, 0.9, 0.7]);
 
+  // For zoom/parallax into marketplace target: compute final transform values
+  // progress 0.85..1 maps to moving the floating image into the target card
+  const finalProgress = useTransform(scrollYProgress, [0.75, 0.95, 1], [0, 0.6, 1]);
+  const floatScale = useTransform(finalProgress, [0, 1], [1, 2.2]);
+  const floatX = useTransform(finalProgress, [0, 1], [0, -120]);
+  const floatY = useTransform(finalProgress, [0, 1], [0, -220]);
+  const floatOpacity = useTransform(finalProgress, [0.6, 1], [1, 0]);
+
   // Logika "Film Strip": Menggeser konten ke atas saat scroll agar baris bawah terlihat
   const internalScrollY = useTransform(scrollYProgress, [0.2, 0.8], ["0%", "-60%"]);
 
@@ -150,11 +158,10 @@ export default function HeroShowreelSection() {
             className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(180deg,transparent,rgba(255,248,238,0.4)_50%,rgba(255,248,238,1) 95%)]"
           />
 
-          <div className="w-[min(100vw,92rem)] mx-auto rounded-[2.5rem] border border-border/60 bg-card/50 backdrop-blur-xl py-10 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.1)] overflow-hidden lg:py-14">
-            <div className="relative z-10 mx-auto w-[min(100%,88rem)] px-6 sm:px-10 lg:px-16">
+          <div className="w-[min(100vw,92rem)]  mx-auto rounded-[2.5rem] border border-border/60 bg-card/50 backdrop-blur-xl py-10 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.1)] overflow-hidden lg:py-14">
               <motion.div
                 style={{ opacity: headerOpacity }}
-                className="mb-8 sticky flex flex-wrap items-end justify-between gap-4 lg:mb-10"
+                className="  sticky flex  flex-wrap items-end justify-between gap-4 z-50 lg:mb-10 "
               >
                 <div>
                   <p className="text-caption uppercase tracking-[0.3em] text-primary/80 font-bold">Nexora visual stream</p>
@@ -166,6 +173,7 @@ export default function HeroShowreelSection() {
                   Cinematic gallery scroll
                 </div>
               </motion.div>
+            <div className="relative z-10 mx-auto w-[min(100%,88rem)] overflow-hidden px-6 sm:px-10 lg:px-16">
 
               {/* Kontainer Baris: Bergerak ke atas seiring scroll Progress */}
               <motion.div 
@@ -176,6 +184,25 @@ export default function HeroShowreelSection() {
                 <StaticRow items={rowTwo} align="end" scrollProgress={scrollYProgress} />
                 <StaticRow items={rowThree} scrollProgress={scrollYProgress} />
                 <StaticRow items={rowFour} align="end" scrollProgress={scrollYProgress} />
+              </motion.div>
+
+              {/* Floating image that will animate/zoom into the marketplace target */}
+              <motion.div
+                style={{
+                  x: floatX,
+                  y: floatY,
+                  scale: floatScale,
+                  opacity: floatOpacity,
+                }}
+                className="pointer-events-none absolute right-8 bottom-12 z-30 hidden md:block"
+              >
+                <div className="w-[420px] rounded-2xl overflow-hidden shadow-xl border border-border/40">
+                  <img
+                    src={rowOne[0].img}
+                    alt="showreel floating"
+                    className="w-full h-56 object-cover"
+                  />
+                </div>
               </motion.div>
 
               <motion.div 
