@@ -22,7 +22,7 @@ export default function Home() {
         <NavBar />
 
         <div className="relative w-full pt-16">
-          <div className="relative isolate h-[220svh] w-full">
+          <div className="relative  h-[380svh] w-full">
             <div className="sticky top-16 z-10">
               <LandingHero />
             </div>

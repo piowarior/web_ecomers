@@ -92,10 +92,11 @@ function StaticRow({ items, align = "start", scrollProgress }: { items: GalleryI
   );
 
   return (
-    <motion.div
-      style={{ x: scrollProgress ? x : 0 }}
-      className={`flex gap-0 ${align === "end" ? "justify-end" : "justify-start"}`}
-    >
+    <div className={`flex justify-center w-full`}>
+      <motion.div
+        style={{ x: scrollProgress ? x : 0 }}
+        className={`flex gap-4 sm:gap-6 lg:gap-8 ${align === "end" ? "justify-end" : "justify-start"}`}
+      >
       {items.map((item) => (
         <article
           key={item.title}
@@ -109,68 +110,84 @@ function StaticRow({ items, align = "start", scrollProgress }: { items: GalleryI
           </div>
         </article>
       ))}
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
 export default function HeroShowreelSection() {
-  const container = useRef<HTMLDivElement | null>(null);
+  const container = useRef<HTMLElement | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start end", "end start"],
+    offset: ["start start", "end end"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 0.45, 1], [96, 24, -24]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 1]);
+  // Animasi halus saat section masuk dan keluar
+  const y = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [100, 0, 0, -100]);
+  const scale = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0.95, 1, 1, 0.95]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.45, 1], [0, 0.35, 0.9]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.45, 1], [1, 0.9, 0.7]);
+
+  // Logika "Film Strip": Menggeser konten ke atas saat scroll agar baris bawah terlihat
+  const internalScrollY = useTransform(scrollYProgress, [0.2, 0.8], ["0%", "-60%"]);
 
   return (
     <section
       ref={container}
       id="ecosystem-live"
-      className="relative h-[140svh] w-screen z-20 bg-background"
+      // Height ditingkatkan menjadi 300vh agar sticky tertahan lebih lama
+      className="relative h-[300vh] w-full z-20 bg-background"
     >
-      <motion.div
-        style={{ y, scale }}
-        className="relative h-full w-full bg-background"
-      >
+      {/* Pembungkus Sticky: Mengunci tampilan di layar selama user scroll 300vh */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-start justify-center pt-20">
         <motion.div
-          style={{ opacity: overlayOpacity }}
-          className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(255,251,245,0.08),rgba(255,248,238,0.42)_35%,rgba(255,248,238,0.99))]"
-        />
+          style={{ y, scale }}
+          className="relative w-full h-full"
+        >
+          <motion.div
+            style={{ opacity: overlayOpacity }}
+            className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(180deg,transparent,rgba(255,248,238,0.4)_50%,rgba(255,248,238,1) 95%)]"
+          />
 
-        <div className="sticky top-16 flex h-svh w-screen items-center justify-center overflow-hidden">
-          <div className="w-[min(100vw,92rem)] mx-auto rounded-[1.2rem] border border-border/60 bg-[linear-gradient(180deg,rgba(255,251,245,0.94),rgba(255,248,238,0.99))] py-6 shadow-[0_32px_80px_-48px_hsl(var(--shadow)/0.88)] sm:py-8 lg:py-10">
-            <div className="mx-auto w-[min(100%,88rem)] px-4 sm:px-6 lg:px-8">
+          <div className="w-[min(100vw,92rem)] mx-auto rounded-[2.5rem] border border-border/60 bg-card/50 backdrop-blur-xl py-10 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.1)] overflow-hidden lg:py-14">
+            <div className="relative z-10 mx-auto w-[min(100%,88rem)] px-6 sm:px-10 lg:px-16">
               <motion.div
                 style={{ opacity: headerOpacity }}
-                className="mb-6 flex flex-wrap items-end justify-between gap-4 lg:mb-7"
+                className="mb-8 sticky flex flex-wrap items-end justify-between gap-4 lg:mb-10"
               >
                 <div>
-                  <p className="text-caption uppercase tracking-[0.22em] text-muted-foreground">Nexora visual stream</p>
-                  <h2 className="mt-2 text-title-lg leading-snug sm:text-display-md">Visual layer rises and merges with the ecosystem.</h2>
+                  <p className="text-caption uppercase tracking-[0.3em] text-primary/80 font-bold">Nexora visual stream</p>
+                  <h2 className="mt-3 text-display-sm leading-[1.1] md:text-display-md text-balance">
+                    Visual layer rises and merges <br /> with the ecosystem.
+                  </h2>
                 </div>
-                <div className="rounded-full border border-border/80 bg-background/60 px-3 py-1.5 text-caption text-muted-foreground backdrop-blur-sm">
+                <div className="rounded-full border border-border/80 bg-background/40 px-4 py-2 text-caption text-muted-foreground backdrop-blur-md">
                   Cinematic gallery scroll
                 </div>
               </motion.div>
 
-              <div className="space-y-2 overflow-hidden sm:space-y-3 lg:space-y-4">
+              {/* Kontainer Baris: Bergerak ke atas seiring scroll Progress */}
+              <motion.div 
+                style={{ y: internalScrollY }}
+                className="space-y-4 overflow-hidden sm:space-y-6 lg:space-y-8"
+              >
                 <StaticRow items={rowOne} scrollProgress={scrollYProgress} />
                 <StaticRow items={rowTwo} align="end" scrollProgress={scrollYProgress} />
                 <StaticRow items={rowThree} scrollProgress={scrollYProgress} />
                 <StaticRow items={rowFour} align="end" scrollProgress={scrollYProgress} />
-              </div>
+              </motion.div>
 
-              <div className="mt-6 rounded-2xl border border-border/70 bg-background/70 px-4 py-3 text-caption text-muted-foreground">
-                Scroll lebih jauh untuk membuka workspace, marketplace, dan rental stack.
-              </div>
+              <motion.div 
+                style={{ opacity: useTransform(scrollYProgress, [0.7, 0.9], [0, 1]) }}
+                className="mt-12 rounded-2xl border border-border/50 bg-background/30 p-5 text-center text-caption text-muted-foreground backdrop-blur-sm"
+              >
+                Continue scrolling to explore workspace, marketplace, and rental stack.
+              </motion.div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
