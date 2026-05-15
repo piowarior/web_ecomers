@@ -10,7 +10,7 @@ import DropdownExplore from "./dropdowns/DropdownExplore";
 
 export default function NavBar() {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-sm bg-cream-10/60 border-b border-neutral-100">
+    <header className="fixed top-0 left-0 right-0 z-40 backdrop-blur-sm bg-cream-10/60 border-b border-neutral-100">
       <nav className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <a href="#" className="font-semibold text-lg text-neutral-900">
@@ -42,7 +42,7 @@ export default function NavBar() {
         <div className="flex items-center gap-3">
           <a
             href="#"
-            className="px-3 py-2 rounded-md bg-orange-50 text-neutral-900 font-medium shadow-sm hover:translate-y-[-1px] transition-transform"
+            className="px-3 py-2 rounded-md bg-orange-50 text-neutral-900 font-medium shadow-sm hover:-translate-y-px transition-transform"
           >
             Get Started
           </a>

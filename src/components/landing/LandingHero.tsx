@@ -11,12 +11,12 @@ const floating = [
 
 export default function LandingHero() {
   return (
-    <section className="relative min-h-svh overflow-hidden">
+    <section className="relative z-10 min-h-svh overflow-hidden">
       <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_50%_15%,rgba(242,216,177,0.65),transparent_35%),radial-gradient(circle_at_85%_18%,rgba(140,170,216,0.24),transparent_35%)]" />
 
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <video
-          className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)]"
+          className="absolute inset-0 h-full w-full object-cover transform-[translate3d(0,0,0)]"
           autoPlay
           muted
           loop
