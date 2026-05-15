@@ -12,6 +12,7 @@ import Footer from "@/components/landing/Footer";
 import { PageContainer } from "@/components/layouts/PageContainer";
 import MarketplaceStack from "@/components/landing/MarketplaceStack";
 import ImmersiveStory from "@/components/landing/ImmersiveStory";
+import LiveEcosystemPreview from "@/components/landing/LiveEcosystemPreview";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
           </div>
         </div>
         <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
+          <LiveEcosystemPreview />
           <MarketplaceStack />
           <ImmersiveStory />
           <ServiceUniverse />

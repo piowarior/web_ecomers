@@ -21,7 +21,7 @@ const rowOne: GalleryItem[] = [
   {
     title: "Design Lab",
     img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
   {
     title: "Dashboard UI",
@@ -34,7 +34,7 @@ const rowTwo: GalleryItem[] = [
   {
     title: "Prototype Room",
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
   {
     title: "Brand Surface",
@@ -44,7 +44,7 @@ const rowTwo: GalleryItem[] = [
   {
     title: "Motion Stack",
     img: "https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
 ];
 
@@ -52,7 +52,7 @@ const rowThree: GalleryItem[] = [
   {
     title: "Workspace Feed",
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
   {
     title: "AI Console",
@@ -62,7 +62,7 @@ const rowThree: GalleryItem[] = [
   {
     title: "Launch Board",
     img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
 ];
 
@@ -70,7 +70,7 @@ const rowFour: GalleryItem[] = [
   {
     title: "Ecosystem View",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
   {
     title: "Rental Shelf",
@@ -80,7 +80,7 @@ const rowFour: GalleryItem[] = [
   {
     title: "Digital Ops",
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    size: "h-72 w-[26rem] sm:h-80 sm:w-[32rem] lg:h-96 lg:w-[40rem]",
+    size: "h-64 w-96 sm:h-72 sm:w-[26rem] lg:h-80 lg:w-[32rem]",
   },
 ];
 
@@ -158,10 +158,10 @@ export default function HeroShowreelSection() {
             className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(180deg,transparent,rgba(255,248,238,0.4)_50%,rgba(255,248,238,1) 95%)]"
           />
 
-          <div className="w-[min(100vw,92rem)]  mx-auto rounded-[2.5rem] border border-border/60 bg-card/50 backdrop-blur-xl py-10 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.1)] overflow-hidden lg:py-14">
+          <div className="w-[min(100vw,92rem)] max-h-[85vh] mx-auto rounded-[2.5rem] border border-border/60 bg-card/50 backdrop-blur-xl py-10 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.1)] overflow-hidden lg:py-14">
               <motion.div
                 style={{ opacity: headerOpacity }}
-                className="  sticky flex  flex-wrap items-end justify-between gap-4 z-50 lg:mb-10 "
+                className="  sticky flex px-24 flex-wrap items-end justify-between gap-4 z-50 lg:mb-5 "
               >
                 <div>
                   <p className="text-caption uppercase tracking-[0.3em] text-primary/80 font-bold">Nexora visual stream</p>
@@ -173,7 +173,8 @@ export default function HeroShowreelSection() {
                   Cinematic gallery scroll
                 </div>
               </motion.div>
-            <div className="relative z-10 mx-auto w-[min(100%,88rem)] overflow-hidden px-6 sm:px-10 lg:px-16">
+
+            <div className="relative z-10 mx-auto w-[min(100%,88rem)] overflow-hidden  px-6 sm:px-10 lg:px-16">
 
               {/* Kontainer Baris: Bergerak ke atas seiring scroll Progress */}
               <motion.div 
