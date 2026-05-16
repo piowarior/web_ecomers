@@ -17,11 +17,12 @@ import LiveEcosystemPreview from "@/components/landing/LiveEcosystemPreview";
 export default function Home() {
   return (
     <SmoothScroll>
-      <main className="relative w-full overflow-x-clip pb-10">
+      <main className="relative w-full overflow-x-clip">
         <AnimatedBackdrop />
         <InteractiveCursor />
         <NavBar />
 
+        {/* ── Hero area ── */}
         <div className="relative w-full pt-16">
           <div className="relative  h-[380svh] w-full">
             <div className="sticky top-16 z-10">
@@ -33,16 +34,98 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
+
+        {/* ── Section flow with continuous blended gradients ──
+             Each band's bottom color matches the next band's top color
+             so there are zero visible "cuts" between sections. */}
+
+        {/* Band 1 — warm cream (hero transition → warm amber) */}
+        <div
+          className="relative w-full"
+          style={{
+            background: `linear-gradient(180deg,
+              oklch(0.976 0.014 76.5) 0%,
+              oklch(0.972 0.022 78) 30%,
+              oklch(0.968 0.025 80) 70%,
+              oklch(0.97 0.018 85) 100%
+            )`,
+          }}
+        >
           <LiveEcosystemPreview />
+        </div>
+
+        {/* Band 2 — warm amber → cool blue */}
+        <div
+          className="relative w-full"
+          style={{
+            background: `linear-gradient(180deg,
+              oklch(0.97 0.018 85) 0%,
+              oklch(0.971 0.02 90) 25%,
+              oklch(0.973 0.016 160) 60%,
+              oklch(0.972 0.018 200) 100%
+            )`,
+          }}
+        >
+          {/* MarketplaceStack handles its own max-width + padding internally */}
           <MarketplaceStack />
-          <ImmersiveStory />
-          <ServiceUniverse />
-          <WorkspaceExperience />
-          <CreatorShowcase />
-          <FinalLaunchSection />
-          <Footer />
-        </PageContainer>
+          <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
+            <ImmersiveStory />
+          </PageContainer>
+        </div>
+
+        {/* Band 3 — cool blue → soft lavender */}
+        <div
+          className="relative w-full"
+          style={{
+            background: `linear-gradient(180deg,
+              oklch(0.972 0.018 200) 0%,
+              oklch(0.971 0.022 230) 30%,
+              oklch(0.973 0.018 260) 65%,
+              oklch(0.972 0.02 290) 100%
+            )`,
+          }}
+        >
+          <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
+            <ServiceUniverse />
+            <WorkspaceExperience />
+          </PageContainer>
+        </div>
+
+        {/* Band 4 — lavender → golden warm */}
+        <div
+          className="relative w-full"
+          style={{
+            background: `linear-gradient(180deg,
+              oklch(0.972 0.02 290) 0%,
+              oklch(0.971 0.022 320) 20%,
+              oklch(0.97 0.025 40) 55%,
+              oklch(0.968 0.028 60) 80%,
+              oklch(0.966 0.03 70) 100%
+            )`,
+          }}
+        >
+          <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
+            <CreatorShowcase />
+          </PageContainer>
+        </div>
+
+        {/* Band 5 — golden → deep warm (CTA + Footer) */}
+        <div
+          className="relative w-full"
+          style={{
+            background: `linear-gradient(180deg,
+              oklch(0.966 0.03 70) 0%,
+              oklch(0.964 0.032 65) 30%,
+              oklch(0.96 0.028 72) 60%,
+              oklch(0.958 0.025 76) 100%
+            )`,
+          }}
+        >
+          <PageContainer className="pb-10">
+            <FinalLaunchSection />
+            <Footer />
+          </PageContainer>
+        </div>
       </main>
     </SmoothScroll>
   );

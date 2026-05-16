@@ -22,6 +22,9 @@ import {
   Database,
   CloudCog,
   LayoutDashboard,
+  Wifi,
+  Lock,
+  Send,
   type LucideIcon,
 } from "lucide-react";
 
@@ -44,6 +47,9 @@ const cards = [
   { icon: MessageSquare, title: "Client message", note: "Feedback received", time: "10m ago", color: "accent" },
   { icon: BarChart3, title: "Analytics pulse", note: "12k sessions today", time: "11m ago", color: "primary" },
   { icon: Cpu, title: "Edge function", note: "Latency < 12ms", time: "12m ago", color: "accent" },
+  { icon: Wifi, title: "Webhook triggered", note: "Stripe → CRM sync", time: "13m ago", color: "primary" },
+  { icon: Lock, title: "Auth verified", note: "OAuth 2.0 flow OK", time: "14m ago", color: "accent" },
+  { icon: Send, title: "Notification sent", note: "432 users reached", time: "15m ago", color: "primary" },
 ];
 
 /* Floating texts — own speed layer */
@@ -54,7 +60,7 @@ const floatingTexts = [
   { text: "auto-scaling", x: 50, y: 80 },
   { text: "end-to-end encrypted", x: 65, y: 25 },
   { text: "multi-region", x: 82, y: 72 },
-  { text: "event-driven", x: 98, y: 20 },
+  { text: "event-driven", x: 90, y: 20 },          /* ← line 63: posisi text "event-driven" (x = horizontal %) */
   { text: "serverless", x: 115, y: 78 },
   { text: "composable", x: 130, y: 22 },
   { text: "edge-first", x: 148, y: 76 },
@@ -66,26 +72,34 @@ const floatingTexts = [
 
 /* Floating icons — fastest layer */
 const floatingIcons: { Icon: LucideIcon; x: number; y: number; size: number; baseRotate: number }[] = [
-  { Icon: Sparkles, x: 6, y: 35, size: 7, baseRotate: 0 },
-  { Icon: Zap, x: 16, y: 82, size: 6, baseRotate: 45 },
-  { Icon: Globe, x: 28, y: 15, size: 8, baseRotate: 90 },
-  { Icon: Shield, x: 38, y: 70, size: 6, baseRotate: 135 },
-  { Icon: Rocket, x: 48, y: 30, size: 7, baseRotate: 180 },
-  { Icon: Cpu, x: 58, y: 85, size: 6, baseRotate: 225 },
-  { Icon: TrendingUp, x: 68, y: 20, size: 7, baseRotate: 270 },
-  { Icon: Layers, x: 78, y: 75, size: 6, baseRotate: 315 },
-  { Icon: Workflow, x: 88, y: 38, size: 8, baseRotate: 20 },
-  { Icon: Database, x: 98, y: 80, size: 6, baseRotate: 60 },
-  { Icon: CloudCog, x: 108, y: 25, size: 7, baseRotate: 100 },
-  { Icon: Code2, x: 118, y: 72, size: 6, baseRotate: 140 },
-  { Icon: LayoutDashboard, x: 128, y: 32, size: 7, baseRotate: 200 },
-  { Icon: Activity, x: 138, y: 78, size: 6, baseRotate: 240 },
-  { Icon: Bot, x: 148, y: 18, size: 8, baseRotate: 280 },
-  { Icon: Palette, x: 158, y: 68, size: 6, baseRotate: 320 },
-  { Icon: BriefcaseBusiness, x: 168, y: 40, size: 7, baseRotate: 30 },
-  { Icon: UsersRound, x: 178, y: 85, size: 6, baseRotate: 70 },
-  { Icon: MessageSquare, x: 188, y: 22, size: 7, baseRotate: 110 },
-  { Icon: BarChart3, x: 198, y: 75, size: 6, baseRotate: 150 },
+  { Icon: Sparkles, x: 3, y: 35, size: 7, baseRotate: 0 },
+  { Icon: Zap, x: 10, y: 82, size: 6, baseRotate: 45 },
+  { Icon: Globe, x: 18, y: 15, size: 8, baseRotate: 90 },
+  { Icon: Shield, x: 25, y: 70, size: 6, baseRotate: 135 },
+  { Icon: Rocket, x: 32, y: 30, size: 7, baseRotate: 180 },
+  { Icon: Cpu, x: 39, y: 85, size: 6, baseRotate: 225 },
+  { Icon: TrendingUp, x: 46, y: 20, size: 7, baseRotate: 270 },
+  { Icon: Layers, x: 53, y: 75, size: 6, baseRotate: 315 },
+  { Icon: Workflow, x: 60, y: 38, size: 8, baseRotate: 20 },
+  { Icon: Database, x: 67, y: 80, size: 6, baseRotate: 60 },
+  { Icon: CloudCog, x: 74, y: 25, size: 7, baseRotate: 100 },
+  { Icon: Code2, x: 81, y: 72, size: 6, baseRotate: 140 },
+  { Icon: LayoutDashboard, x: 88, y: 32, size: 7, baseRotate: 200 },
+  { Icon: Activity, x: 95, y: 78, size: 6, baseRotate: 240 },
+  { Icon: Bot, x: 102, y: 18, size: 8, baseRotate: 280 },
+  { Icon: Palette, x: 109, y: 68, size: 6, baseRotate: 320 },
+  { Icon: BriefcaseBusiness, x: 116, y: 40, size: 7, baseRotate: 30 },
+  { Icon: UsersRound, x: 123, y: 85, size: 6, baseRotate: 70 },
+  { Icon: MessageSquare, x: 130, y: 22, size: 7, baseRotate: 110 },
+  { Icon: BarChart3, x: 137, y: 75, size: 6, baseRotate: 150 },
+  { Icon: Wifi, x: 144, y: 35, size: 7, baseRotate: 190 },
+  { Icon: Lock, x: 151, y: 80, size: 6, baseRotate: 230 },
+  { Icon: Send, x: 158, y: 20, size: 7, baseRotate: 260 },
+  { Icon: Sparkles, x: 165, y: 70, size: 6, baseRotate: 300 },
+  { Icon: Zap, x: 172, y: 30, size: 8, baseRotate: 10 },
+  { Icon: Globe, x: 179, y: 82, size: 6, baseRotate: 50 },
+  { Icon: Shield, x: 186, y: 25, size: 7, baseRotate: 90 },
+  { Icon: Rocket, x: 193, y: 75, size: 6, baseRotate: 130 },
 ];
 
 /* Large background text — on card layer */
@@ -97,35 +111,45 @@ const bgTexts = [
   { text: "SIGNAL", x: 175, y: 48 },
 ];
 
-/* Card positions — scattered but tidy */
+/* Card positions — scattered but tidy (19 cards)
+   Format: { left: horizontal %, top: vertical % }
+   Index maps to the `cards` array above in the same order */
 const cardPositions = [
-  { left: 2, top: 15 },
-  { left: 8, top: 58 },
-  { left: 18, top: 28 },
-  { left: 24, top: 68 },
-  { left: 34, top: 14 },
-  { left: 40, top: 55 },
-  { left: 50, top: 25 },
-  { left: 56, top: 65 },
-  { left: 66, top: 16 },
-  { left: 72, top: 58 },
-  { left: 82, top: 30 },
-  { left: 88, top: 70 },
-  { left: 98, top: 15 },
-  { left: 104, top: 55 },
-  { left: 114, top: 26 },
-  { left: 120, top: 66 },
+  { left: 2, top: 15 },      /* 0  — Marketplace live */
+  { left: 8, top: 58 },      /* 1  — Freelancer online */
+  { left: 18, top: 28 },     /* 2  — Project created */
+  { left: 24, top: 68 },     /* 3  — AI automation */
+  { left: 34, top: 14 },     /* 4  — Payment received */
+  { left: 40, top: 55 },     /* 5  — Domain connected */
+  { left: 50, top: 25 },     /* 6  — Security scan */
+  { left: 56, top: 65 },     /* 7  — Stack deployed */
+  { left: 66, top: 16 },     /* 8  — AI suggestion */
+  { left: 72, top: 58 },     /* 9  — Traffic spike */
+  { left: 76, top: 30 },     /* 10 — New launch */
+  { left: 82, top: 70 },     /* 11 — Code review */
+  { left: 88, top: 15 },     /* 12 — Design system ← line 128: posisi card "Design system" */
+  { left: 95, top: 55 },     /* 13 — Client message */
+  { left: 101, top: 26 },    /* 14 — Analytics pulse */
+  { left: 108, top: 66 },    /* 15 — Edge function */
+  { left: 116, top: 18 },    /* 16 — Webhook triggered */
+  { left: 122, top: 60 },    /* 17 — Auth verified */
+  { left: 130, top: 30 },    /* 18 — Notification sent */
 ];
 
-/* ── Scroll speed multipliers ──
-   Cards    = 1.0× (base)
-   Texts    = 1.35× (medium)
-   Icons    = 1.7× (fastest)
-*/
+/* ── Scroll speed multipliers ── */
 const CARD_SPEED = 1.0;
 const TEXT_SPEED = 1.35;
 const ICON_SPEED = 1.7;
-const BASE_TRANSLATE = -120; // vw at 100% scroll
+
+/* Canvas widths in vw — icons are wider because they move faster */
+const CARD_CANVAS_VW = 260;
+const TEXT_CANVAS_VW = 300;
+const ICON_CANVAS_VW = 360;
+
+/* Total translateX at 100% (so content fully scrolls through viewport) */
+const CARD_MAX_TRANSLATE = -(CARD_CANVAS_VW - 100);
+const TEXT_MAX_TRANSLATE = -(TEXT_CANVAS_VW - 100);
+const ICON_MAX_TRANSLATE = -(ICON_CANVAS_VW - 100);
 
 /* ───────────────────── FloatingIcon sub-component ───────────────────── */
 
@@ -136,6 +160,7 @@ function FloatingIcon({
   size,
   baseRotate,
   index,
+  scrollProgress,
 }: {
   Icon: LucideIcon;
   x: number;
@@ -143,6 +168,7 @@ function FloatingIcon({
   size: number;
   baseRotate: number;
   index: number;
+  scrollProgress: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const offsetX = useMotionValue(0);
@@ -174,6 +200,9 @@ function FloatingIcon({
   }, [offsetX, offsetY]);
 
   const px = size * 4;
+  // Rotation driven by scroll — each icon has its own speed multiplier
+  const rotationMultiplier = 180 + index * 40;
+  const rotation = baseRotate + scrollProgress * rotationMultiplier;
 
   return (
     <motion.div
@@ -184,16 +213,7 @@ function FloatingIcon({
         top: `${y}%`,
         x: springX,
         y: springY,
-      }}
-      animate={{
-        rotate: [baseRotate, baseRotate + 360],
-      }}
-      transition={{
-        rotate: {
-          duration: 18 + index * 2,
-          repeat: Infinity,
-          ease: "linear",
-        },
+        rotate: rotation,
       }}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
@@ -208,7 +228,8 @@ function FloatingIcon({
 export default function LiveEcosystemPreview() {
   const [counter, setCounter] = useState(1240);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [scrollX, setScrollX] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const smoothProgress = useRef(0);
 
   /* live counter */
   useEffect(() => {
@@ -218,26 +239,36 @@ export default function LiveEcosystemPreview() {
     return () => clearInterval(id);
   }, []);
 
-  /* horizontal scroll driven by vertical scroll */
+  /* horizontal scroll with lerp smoothing for buttery feel */
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      const scrolled = -rect.top;
-      const maxScroll = sectionHeight - viewportHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
-      setScrollX(progress);
+    let rafId: number;
+    const LERP = 0.08;
+    const tick = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const sectionHeight = sectionRef.current.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrolled = -rect.top;
+        const maxScroll = sectionHeight - viewportHeight;
+        const target = Math.max(0, Math.min(1, scrolled / maxScroll));
+        // Lerp for smooth interpolation
+        smoothProgress.current += (target - smoothProgress.current) * LERP;
+        // Snap if very close to avoid endless micro-updates
+        if (Math.abs(target - smoothProgress.current) < 0.0005) {
+          smoothProgress.current = target;
+        }
+        setProgress(smoothProgress.current);
+      }
+      rafId = requestAnimationFrame(tick);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
-  const cardTranslate = scrollX * BASE_TRANSLATE * CARD_SPEED;
-  const textTranslate = scrollX * BASE_TRANSLATE * TEXT_SPEED;
-  const iconTranslate = scrollX * BASE_TRANSLATE * ICON_SPEED;
+  /* Compute translations — each layer at its own speed */
+  const cardTx = progress * CARD_MAX_TRANSLATE;
+  const textTx = progress * TEXT_MAX_TRANSLATE;
+  const iconTx = progress * ICON_MAX_TRANSLATE;
 
   return (
     <section
@@ -247,9 +278,9 @@ export default function LiveEcosystemPreview() {
       style={{ height: "300vh" }}
     >
       {/* ── Sticky viewport ── */}
-      <div className="sticky top-0 flex h-screen w-full flex-col overflow-hidden bg-background">
-        {/* ─── HEADER ─── separated, with border + bg, vertically centered content */}
-        <div className="relative z-30 shrink-0 border-b border-border/60 bg-background">
+      <div className="sticky top-16 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden">
+        {/* ─── HEADER — fixed info bar, does NOT scroll horizontally ─── */}
+        <div className="relative z-30 shrink-0 border-b border-border/40 bg-background/60 backdrop-blur-xl">
           <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-3 px-6 py-5 sm:px-10 md:flex-row md:items-center md:py-6">
             <div>
               <p className="text-caption text-muted-foreground">Live ecosystem simulation</p>
@@ -273,19 +304,44 @@ export default function LiveEcosystemPreview() {
           </div>
         </div>
 
+        {/* ─── Sub-header info strip ─── */}
+        <div className="relative z-30 shrink-0 border-b border-border/20 bg-background/40 backdrop-blur-md">
+          <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-6 py-2.5 sm:px-10">
+            <div className="flex items-center gap-4 text-caption text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <Activity className="size-3.5" />
+                <span className="hidden sm:inline">19 active signals</span>
+                <span className="sm:hidden">19 signals</span>
+              </span>
+              <span className="hidden text-border sm:inline">|</span>
+              <span className="hidden items-center gap-1.5 sm:flex">
+                <Globe className="size-3.5" />
+                3 regions active
+              </span>
+              <span className="hidden text-border md:inline">|</span>
+              <span className="hidden items-center gap-1.5 md:flex">
+                <Shield className="size-3.5" />
+                All systems operational
+              </span>
+            </div>
+            <span className="text-caption text-muted-foreground/60">
+              ← scroll to explore →
+            </span>
+          </div>
+        </div>
+
         {/* ─── CANVAS AREA ─── fills remaining height */}
         <div className="relative flex-1 overflow-hidden">
           {/* Edge fade gradients */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-background/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-background/80 to-transparent" />
 
           {/* ── Layer 1: Cards (slowest — base speed) ── */}
           <div
             className="absolute inset-0 will-change-transform"
             style={{
-              transform: `translate3d(${cardTranslate}vw, 0, 0)`,
-              transition: "transform 0.08s linear",
-              width: "220vw",
+              transform: `translate3d(${cardTx}vw, 0, 0)`,
+              width: `${CARD_CANVAS_VW}vw`,
             }}
           >
             {/* Large background text (same layer as cards) */}
@@ -361,9 +417,8 @@ export default function LiveEcosystemPreview() {
           <div
             className="pointer-events-none absolute inset-0 will-change-transform"
             style={{
-              transform: `translate3d(${textTranslate}vw, 0, 0)`,
-              transition: "transform 0.06s linear",
-              width: "260vw",
+              transform: `translate3d(${textTx}vw, 0, 0)`,
+              width: `${TEXT_CANVAS_VW}vw`,
             }}
           >
             {floatingTexts.map((ft, i) => (
@@ -392,9 +447,8 @@ export default function LiveEcosystemPreview() {
           <div
             className="absolute inset-0 will-change-transform"
             style={{
-              transform: `translate3d(${iconTranslate}vw, 0, 0)`,
-              transition: "transform 0.04s linear",
-              width: "300vw",
+              transform: `translate3d(${iconTx}vw, 0, 0)`,
+              width: `${ICON_CANVAS_VW}vw`,
             }}
           >
             {floatingIcons.map((fi, i) => (
@@ -406,6 +460,7 @@ export default function LiveEcosystemPreview() {
                 size={fi.size}
                 baseRotate={fi.baseRotate}
                 index={i}
+                scrollProgress={progress}
               />
             ))}
           </div>
@@ -414,13 +469,13 @@ export default function LiveEcosystemPreview() {
           <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
             <div className="flex items-center gap-3 rounded-full border border-border bg-background/80 px-5 py-2.5 text-caption text-muted-foreground backdrop-blur-sm">
               <span className="hidden sm:inline">scroll to explore</span>
-              <div className="h-1 w-20 overflow-hidden rounded-full bg-muted sm:w-28">
+              <div className="h-1.5 w-24 overflow-hidden rounded-full bg-muted sm:w-32">
                 <div
-                  className="h-full rounded-full bg-primary transition-all duration-100"
-                  style={{ width: `${scrollX * 100}%` }}
+                  className="h-full rounded-full bg-primary"
+                  style={{ width: `${progress * 100}%` }}
                 />
               </div>
-              <span className="tabular-nums">{Math.round(scrollX * 100)}%</span>
+              <span className="tabular-nums">{Math.round(progress * 100)}%</span>
             </div>
           </div>
         </div>

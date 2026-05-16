@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 export default function FinalLaunchSection() {
   return (
     <section id="cta" className="relative min-h-svh overflow-hidden py-24 sm:py-28 lg:py-32">
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_35%,rgba(241,214,173,0.34),transparent_35%),radial-gradient(circle_at_75%_25%,rgba(137,168,216,0.22),transparent_30%),linear-gradient(180deg,rgba(255,252,246,0.48),rgba(255,252,246,0.9))]" />
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_35%,rgba(241,214,173,0.18),transparent_40%),radial-gradient(circle_at_75%_25%,rgba(137,168,216,0.12),transparent_35%)]" />
       <div className="absolute inset-0 -z-10 opacity-15 [background:repeating-linear-gradient(45deg,rgba(0,0,0,0.04)_0_1px,transparent_1px_4px)]" />
 
       <div className="flex min-h-[82svh] flex-col items-center justify-center text-center">
@@ -17,17 +17,37 @@ export default function FinalLaunchSection() {
           Final cinematic launch
         </div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl text-balance text-[clamp(3.2rem,8.5vw,7.8rem)] leading-[0.88] tracking-[-0.06em]"
+        <h2
+          className="max-w-6xl text-[clamp(3.2rem,8.5vw,7.8rem)] leading-[0.88] tracking-[-0.06em]"
         >
-          Launch Your Digital Presence
-          <span className="block text-primary">Build Inside The Nexora Ecosystem</span>
-          <span className="block">Start Your Digital Operation</span>
-        </motion.h2>
+          <motion.span
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="block"
+          >
+            Launch Your Digital Presence
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="block text-primary"
+          >
+            Build Inside The Nexora Ecosystem
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="block"
+          >
+            Start Your Digital Operation
+          </motion.span>
+        </h2>
 
         <motion.p
           initial={{ opacity: 0, y: 18 }}

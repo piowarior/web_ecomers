@@ -11,10 +11,10 @@ export default function SmoothScroll({ children }: Props) {
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
-      duration: 0.95,
-      lerp: 0.08,
+      duration: 1.4,
+      lerp: 0.06,
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.75,
     });
 
     lenis.on("scroll", ScrollTrigger.update);
