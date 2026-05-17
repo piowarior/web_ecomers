@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function FinalLaunchSection() {
   return (
-    <section id="cta" className="relative min-h-svh overflow-hidden py-24 sm:py-28 lg:py-32">
+    <section id="cta" className="relative min-h-svh py-24 sm:py-28 lg:py-32">
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_35%,rgba(241,214,173,0.18),transparent_40%),radial-gradient(circle_at_75%_25%,rgba(137,168,216,0.12),transparent_35%)]" />
       <div className="absolute inset-0 -z-10 opacity-15 [background:repeating-linear-gradient(45deg,rgba(0,0,0,0.04)_0_1px,transparent_1px_4px)]" />
 

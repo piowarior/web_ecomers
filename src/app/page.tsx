@@ -8,7 +8,7 @@ import ServiceUniverse from "@/components/landing/ServiceUniverse";
 import WorkspaceExperience from "@/components/landing/WorkspaceExperience";
 import CreatorShowcase from "@/components/landing/CreatorShowcase";
 import FinalLaunchSection from "@/components/landing/FinalLaunchSection";
-import Footer from "@/components/landing/Footer";
+import FooterReveal from "@/components/landing/FooterReveal";
 import { PageContainer } from "@/components/layouts/PageContainer";
 import MarketplaceStack from "@/components/landing/MarketplaceStack";
 import ImmersiveStory from "@/components/landing/ImmersiveStory";
@@ -109,9 +109,9 @@ export default function Home() {
           </PageContainer>
         </div>
 
-        {/* Band 5 — golden → deep warm (CTA + Footer) */}
+        {/* Band 5 — Final Launch + footer reveal */}
         <div
-          className="relative w-full"
+          className="relative w-full overflow-visible"
           style={{
             background: `linear-gradient(180deg,
               oklch(0.966 0.03 70) 0%,
@@ -121,10 +121,11 @@ export default function Home() {
             )`,
           }}
         >
-          <PageContainer className="pb-10">
-            <FinalLaunchSection />
-            <Footer />
-          </PageContainer>
+          <FooterReveal>
+            <PageContainer className="footer-reveal-curtain">
+              <FinalLaunchSection />
+            </PageContainer>
+          </FooterReveal>
         </div>
       </main>
     </SmoothScroll>

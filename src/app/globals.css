@@ -166,4 +166,33 @@
       0 0 0 1px oklch(0.87 0.024 72 / 0.8),
       0 12px 26px -22px hsl(var(--shadow) / 0.88);
   }
+
+  /* Band 5 — PageContainer curtain (rounded + border bawah) */
+  .footer-reveal-curtain {
+    overflow: hidden;
+    border-bottom: 1px solid oklch(0.87 0.024 72 / 0.8);
+    border-radius: 0 0 2rem 2rem;
+    background: linear-gradient(
+      180deg,
+      oklch(0.966 0.03 70) 0%,
+      oklch(0.962 0.029 72) 55%,
+      oklch(0.958 0.025 76) 100%
+    );
+    box-shadow: 0 28px 70px -36px rgba(48, 38, 24, 0.22);
+  }
+
+  @media (min-width: 640px) {
+    .footer-reveal-curtain {
+      border-radius: 0 0 2.5rem 2.5rem;
+    }
+  }
+
+  .footer-reveal-cover {
+    background: linear-gradient(
+      180deg,
+      oklch(0.966 0.03 70) 0%,
+      oklch(0.962 0.029 72) 55%,
+      oklch(0.958 0.025 76) 100%
+    );
+  }
 }
