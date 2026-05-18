@@ -12,10 +12,9 @@ type Props = {
 const LIFT_RATIO = 0.7;
 
 /**
- * Alur:
- * 1. PageContainer + Final Launch scroll normal (bagian atas tirai).
- * 2. Panel bawah tirai (70svh) menutupi footer yang ada di belakangnya.
- * 3. Setelah tirai selesai di-scroll, footer pin di bawah & tirai naik ~70% viewport.
+ * 1. PageContainer + Final Launch scroll normal.
+ * 2. Tirai menutupi footer.
+ * 3. Scroll mentok → footer pin sticky di bawah, terbuka clip dari bawah ke atas, tirai naik.
  */
 export default function FooterReveal({ children }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -34,12 +33,14 @@ export default function FooterReveal({ children }: Props) {
     const liftPx = () => window.innerHeight * LIFT_RATIO;
 
     const ctx = gsap.context(() => {
+      gsap.set(footerSlot, { clipPath: "inset(0 0 100% 0)" });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: curtain,
           start: "bottom bottom",
           end: () => `+=${liftPx()}`,
-          scrub: 0.55,
+          scrub: 0.65,
           pin: footerSlot,
           pinSpacing: true,
           anticipatePin: 1,
@@ -47,6 +48,11 @@ export default function FooterReveal({ children }: Props) {
         },
       });
 
+      tl.to(
+        footerSlot,
+        { clipPath: "inset(0 0 0% 0)", ease: "none" },
+        0,
+      );
       tl.to(curtain, { y: () => -liftPx(), ease: "none" }, 0);
     }, section);
 
@@ -62,7 +68,6 @@ export default function FooterReveal({ children }: Props) {
 
   return (
     <div ref={sectionRef} className="relative w-full">
-      {/* Tirai: PageContainer + Final Launch + penutup footer */}
       <div ref={curtainRef} className="relative z-[30] w-full will-change-transform">
         {children}
         <div
@@ -71,10 +76,9 @@ export default function FooterReveal({ children }: Props) {
         />
       </div>
 
-      {/* Footer — tertutup tirai, lalu pin sticky di bawah saat fase buka */}
       <div
         ref={footerSlotRef}
-        className="relative z-[10] h-[70svh] w-full min-h-[28rem]"
+        className="relative z-[10] h-[70svh] w-full min-h-[28rem] overflow-hidden will-change-[clip-path]"
       >
         <Footer />
       </div>
