@@ -144,7 +144,7 @@ export default function HeroShowreelSection() {
     <section
       ref={container}
       id="ecosystem-live"
-      // Height ditingkatkan menjadi 300vh agar sticky tertahan lebih lama
+      // Height dioptimalkan untuk timing yang lebih baik dengan footer
       className="relative h-[300vh] w-full z-20 bg-background"
     >
       {/* Pembungkus Sticky: Mengunci tampilan di layar selama user scroll 300vh */}

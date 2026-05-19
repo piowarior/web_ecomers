@@ -124,8 +124,11 @@ export default function Home() {
           <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
             <FinalLaunchSection />
           </PageContainer>
+          {/* Extended padding untuk footer reveal effect — diperbesar untuk cukup scroll */}
+          <div className="h-[120vh] w-full" />
         </div>
 
+        {/* StickyFooter dengan reveal effect */}
         <StickyFooter />
       </main>
     </SmoothScroll>
