@@ -8,6 +8,7 @@ import ServiceUniverse from "@/components/landing/ServiceUniverse";
 import WorkspaceExperience from "@/components/landing/WorkspaceExperience";
 import CreatorShowcase from "@/components/landing/CreatorShowcase";
 import FinalLaunchSection from "@/components/landing/FinalLaunchSection";
+import Footer from "@/components/landing/Footer";
 import StickyFooter from "@/components/landing/StickyFooter";
 import { PageContainer } from "@/components/layouts/PageContainer";
 import MarketplaceStack from "@/components/landing/MarketplaceStack";
@@ -111,7 +112,13 @@ export default function Home() {
 
         {/* Band 5 — Final Launch + sticky footer */}
         <div
-          className="relative w-full overflow-visible"
+          className="
+            relative z-10 w-full overflow-visible
+            rounded-b-[48px]
+            border-x border-b border-white/10
+            shadow-[0_40px_120px_rgba(0,0,0,0.12)]
+            transition-all duration-700
+          "
           style={{
             background: `linear-gradient(180deg,
               oklch(0.966 0.03 70) 0%,
@@ -124,12 +131,26 @@ export default function Home() {
           <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
             <FinalLaunchSection />
           </PageContainer>
-          {/* Extended padding untuk footer reveal effect — diperbesar untuk cukup scroll */}
-          <div className="h-[120vh] w-full" />
+
+          <div
+            className="
+              h-[30vh] w-full rounded-b-[48px]
+              border-t border-white/10
+            "
+          />
         </div>
 
-        {/* StickyFooter dengan reveal effect */}
-        <StickyFooter />
+        {/* Sticky Reveal Footer */}
+        <div
+          className="relative h-[70vh]"
+          style={{
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          }}
+        >
+          <div className="fixed bottom-0 left-0 h-[70vh] w-full">
+            <Footer className="h-full" />
+          </div>
+        </div>
       </main>
     </SmoothScroll>
   );

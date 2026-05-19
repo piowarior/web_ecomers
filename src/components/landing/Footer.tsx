@@ -59,7 +59,7 @@ export default function Footer({ className }: FooterProps) {
     <footer
       aria-label="Site footer"
       className={cn(
-        "flex h-full w-full flex-col overflow-hidden",
+        "relative flex w-full flex-col overflow-hidden",
         className,
       )}
       style={{
