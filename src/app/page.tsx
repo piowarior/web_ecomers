@@ -8,7 +8,7 @@ import ServiceUniverse from "@/components/landing/ServiceUniverse";
 import WorkspaceExperience from "@/components/landing/WorkspaceExperience";
 import CreatorShowcase from "@/components/landing/CreatorShowcase";
 import FinalLaunchSection from "@/components/landing/FinalLaunchSection";
-import FooterReveal from "@/components/landing/FooterReveal";
+import StickyFooter from "@/components/landing/StickyFooter";
 import { PageContainer } from "@/components/layouts/PageContainer";
 import MarketplaceStack from "@/components/landing/MarketplaceStack";
 import ImmersiveStory from "@/components/landing/ImmersiveStory";
@@ -109,7 +109,7 @@ export default function Home() {
           </PageContainer>
         </div>
 
-        {/* Band 5 — Final Launch + footer reveal */}
+        {/* Band 5 — Final Launch + sticky footer */}
         <div
           className="relative w-full overflow-visible"
           style={{
@@ -121,12 +121,12 @@ export default function Home() {
             )`,
           }}
         >
-          <FooterReveal>
-            <PageContainer className="footer-reveal-curtain">
-              <FinalLaunchSection />
-            </PageContainer>
-          </FooterReveal>
+          <PageContainer className="space-y-24 py-20 sm:py-24 lg:py-32">
+            <FinalLaunchSection />
+          </PageContainer>
         </div>
+
+        <StickyFooter />
       </main>
     </SmoothScroll>
   );
