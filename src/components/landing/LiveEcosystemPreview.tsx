@@ -324,9 +324,17 @@ export default function LiveEcosystemPreview() {
                 All systems operational
               </span>
             </div>
-            <span className="text-caption text-muted-foreground/60">
-              ← scroll to explore →
-            </span>
+            {/* Scroll indicator — pindah ke atas */}
+            <div className="mt-3 flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2 text-caption text-muted-foreground backdrop-blur-sm">
+              <span className="hidden sm:inline">scroll to explore</span>
+              <div className="h-1 w-16 overflow-hidden rounded-full bg-muted sm:w-24">
+                <div
+                  className="h-full rounded-full bg-primary"
+                  style={{ width: `${progress * 100}%` }}
+                />
+              </div>
+              <span className="tabular-nums text-xs">{Math.round(progress * 100)}%</span>
+            </div>
           </div>
         </div>
 
@@ -465,19 +473,7 @@ export default function LiveEcosystemPreview() {
             ))}
           </div>
 
-          {/* Scroll progress indicator */}
-          <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
-            <div className="flex items-center gap-3 rounded-full border border-border bg-background/80 px-5 py-2.5 text-caption text-muted-foreground backdrop-blur-sm">
-              <span className="hidden sm:inline">scroll to explore</span>
-              <div className="h-1.5 w-24 overflow-hidden rounded-full bg-muted sm:w-32">
-                <div
-                  className="h-full rounded-full bg-primary"
-                  style={{ width: `${progress * 100}%` }}
-                />
-              </div>
-              <span className="tabular-nums">{Math.round(progress * 100)}%</span>
-            </div>
-          </div>
+          {/* Scroll progress indicator — dihapus karena sudah di atas header */}
         </div>
       </div>
     </section>

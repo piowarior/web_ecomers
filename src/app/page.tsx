@@ -53,6 +53,8 @@ export default function Home() {
           }}
         >
           <LiveEcosystemPreview />
+          {/* Padding bottom sebelum masuk MarketplaceStack */}
+          <div className="h-20 w-full" />
         </div>
 
         {/* Band 2 — warm amber → cool blue */}
@@ -113,9 +115,9 @@ export default function Home() {
         {/* Band 5 — Final Launch + sticky footer */}
         <div
           className="
-            relative z-10 w-full overflow-visible
-            rounded-b-[48px]
+            relative z-10 w-full overflow-hidden
             border-x border-b border-white/10
+            rounded-b-[48px]
             shadow-[0_40px_120px_rgba(0,0,0,0.12)]
             transition-all duration-700
           "
